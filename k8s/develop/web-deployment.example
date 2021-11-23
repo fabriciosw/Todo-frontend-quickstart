@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nome_do_projeto-deployment-develop
+  namespace: sigla_do_projeto # <-- trocar p/ projeto
+spec:
+  selector:
+    matchLabels:
+      app: nome_do_projeto-develop
+  template:
+    metadata:
+      labels:
+        app: nome_do_projeto-develop
+    spec:
+      containers:
+        - name: nome_do_projeto-container-develop
+          image: registry.softdesign-rs.com.br/<sigla_projeto>/<nome_projeto>:develop
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nome_do_projeto-service-develop
+  namespace: sigla_do_projeto # <-- trocar p/ projeto
+spec:
+  selector:
+    app: nome_do_projeto-develop
+  type: NodePort
+  ports:
+    - name: app
+      port: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nome_do_projeto-ingress-develop
+  namespace: sigla_do_projeto
+spec:
+  rules:
+    - host: nome_do_projeto-develop.ingress.softdesign.com.br
+      http:
+        paths:
+          - backend:
+              serviceName: nome_do_projeto-service-develop
+              servicePort: 80
+            path: /

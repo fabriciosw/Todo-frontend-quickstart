@@ -1,0 +1,55 @@
+header {
+  .nav {
+    background-color: var(--main-color-darker);
+    &__toggle,
+    &__user {
+      color: var(--main-color-background);
+      cursor: pointer;
+      button {
+        background-color: transparent;
+        border: 0;
+        color: var(--main-color-background);
+      }
+      ul {
+        padding-left: 0;
+        padding-top: 1rem;
+        li {
+          display: block;
+          width: 100%;
+          padding: 0.25rem 1rem;
+          clear: both;
+          font-weight: var(--is-400);
+          color: var(--text-color-primary);
+          text-align: center;
+          text-decoration: none;
+          white-space: nowrap;
+          background-color: transparent;
+          border: 0;
+          a,
+          button {
+            font-weight: var(--is-400);
+            color: var(--text-color-primary);
+            text-decoration: none;
+          }
+          button:hover {
+            background-color: transparent;
+          }
+        }
+      }
+      .dropdown-menu {
+        width: 100%;
+      }
+      .dropdown-toggle {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        color: var(--main-color-background);
+        &:hover,
+        &:focus,
+        &:active {
+          color: var(--main-color-background);
+        }
+      }
+    }
+  }
+}

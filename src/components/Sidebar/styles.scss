@@ -1,0 +1,71 @@
+.sidebar {
+  background-color: var(--main-color-background);
+  border-right: 1px solid var(--text-color-contrast-lighter);
+  min-height: 100vh;
+  max-height: 100vh;
+  min-width: 15.625rem;
+  max-width: 15.625rem;
+  position: fixed;
+  transition: 0.2s ease-in;
+  &__brand {
+    padding-top: 0.2rem;
+    padding-bottom: 2rem;
+    svg {
+      min-width: 10rem;
+      max-width: 10rem;
+    }
+  }
+  &__routes {
+    &--ul {
+      line-height: 2.8rem;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    &--link {
+      color: var(--text-color-primary);
+      font-weight: var(--is-400);
+      padding-left: 1rem;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: var(--text-color-primary);
+      }
+    }
+    &--title {
+      margin-left: 0.3rem;
+      position: relative;
+      top: 0.063rem;
+    }
+    &--active {
+      background-color: var(--main-color-darker);
+      color: var(--main-color-background) !important;
+      font-weight: var(--is-500) !important;
+    }
+  }
+}
+
+.min-width {
+  transition: 0.2s ease-out;
+  min-width: 5rem;
+  max-width: 5rem;
+  .sidebar__brand {
+    svg {
+      min-width: 5rem;
+      max-width: 5rem;
+    }
+  }
+  .sidebar__routes {
+    &--ul {
+      min-width: 5rem;
+      max-width: 5rem;
+    }
+    &--link {
+      padding-left: 0 !important;
+      text-align: center;
+      margin: 0 auto;
+    }
+    &--title {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quickstart-react-deployment-stage
+  namespace: quickstart # <-- trocar p/ projeto
+spec:
+  selector:
+    matchLabels:
+      app: quickstart-react-stage
+  template:
+    metadata:
+      labels:
+        app: quickstart-react-stage
+    spec:
+      containers:
+        - name: quickstart-react-container-stage
+          image: registry.softdesign-rs.com.br/quickstart/quickstart-react:stage
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: quickstart-react-service-stage
+  namespace: quickstart # <-- trocar p/ projeto
+spec:
+  selector:
+    app: quickstart-react-stage
+  type: NodePort
+  ports:
+    - name: app
+      port: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: quickstart-react-ingress-stage
+  namespace: quickstart
+spec:
+  rules:
+    - host: quickstart-react-stage.ingress.softdesign.com.br
+      http:
+        paths:
+          - backend:
+              serviceName: quickstart-react-service-stage
+              servicePort: 80
+            path: /
