@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
-import { HouseDoorFill, PeopleFill } from 'react-bootstrap-icons';
+import { HiUser, HiHome } from 'react-icons/hi';
 import Text from '../Text';
 import { useToggleMenu } from '../../contexts/ToggleMenuContext';
 import { ReactComponent as Logo } from '../../statics/logo/logo.svg';
@@ -19,7 +19,7 @@ const Sidebar: React.FunctionComponent = () => {
         <ul className="sidebar__routes--ul d-flex flex-wrap flex-column">
           <li className="d-flex align-items-center">
             <NavLink to="/" exact className="sidebar__routes--link w-100" activeClassName="sidebar__routes--active">
-              <HouseDoorFill size={22} />{' '}
+              <HiHome size={22} />{' '}
               <Text as="span" className="sidebar__routes--title">
                 Home
               </Text>
@@ -32,7 +32,7 @@ const Sidebar: React.FunctionComponent = () => {
               className="sidebar__routes--link w-100"
               activeClassName="sidebar__routes--active"
             >
-              <PeopleFill size={22} />{' '}
+              <HiUser size={22} />{' '}
               <Text as="span" className="sidebar__routes--title">
                 Gerenciar funcionários
               </Text>
@@ -45,7 +45,7 @@ const Sidebar: React.FunctionComponent = () => {
               className="sidebar__routes--link w-100"
               activeClassName="sidebar__routes--active"
             >
-              <PeopleFill size={22} />{' '}
+              <HiUser size={22} />{' '}
               <Text as="span" className="sidebar__routes--title">
                 Criar funcionário
               </Text>

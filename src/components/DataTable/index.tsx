@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
-import { TrashFill, PencilFill } from 'react-bootstrap-icons';
+import { HiTrash, HiPencil } from 'react-icons/hi';
 import { IData, IUser } from '../../interfaces';
 import UsersService from '../../services/users.service';
 import toastMsg, { ToastType } from '../../utils/toastMsg';
@@ -40,14 +40,14 @@ const DataTable = ({ data, renderUsers }: { data: IData<IUser>; renderUsers: () 
               <td>{item.last_name}</td>
               <td>{item.email}</td>
               <td className="table__actions">
-                <PencilFill
+                <HiPencil
                   size={17}
                   className="table__icon-update table__icon-svg"
                   onClick={() => {
                     history.push(`/editar-funcionario/${item.id}`);
                   }}
                 />
-                <TrashFill
+                <HiTrash
                   size={17}
                   className="table__icon-trash table__icon-svg"
                   onClick={() => {

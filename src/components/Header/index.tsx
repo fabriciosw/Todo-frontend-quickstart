@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
-import { TextRight, PersonFill } from 'react-bootstrap-icons';
+import { HiUser, HiMenuAlt3 } from 'react-icons/hi';
 import Text from '../Text';
 import { useAuth } from '../../contexts/AuthContext';
 import { useToggleMenu } from '../../contexts/ToggleMenuContext';
@@ -19,7 +19,7 @@ const Header: React.FunctionComponent = () => {
             <Col md={12}>
               <div className="nav__grid-items d-flex justify-content-between align-items-center">
                 <div className="nav__toggle">
-                  <TextRight
+                  <HiMenuAlt3
                     size={25}
                     onClick={() => {
                       updateToggleMenu();
@@ -30,7 +30,7 @@ const Header: React.FunctionComponent = () => {
                   <Dropdown>
                     <Dropdown.Toggle variant="none">
                       <Text as="small" size="var(--is-sm)" weight={400}>
-                        <PersonFill size={18} />
+                        <HiUser size={18} />
                         Olá,{' '}
                         <Text as="b" weight={700}>
                           {currentUser?.displayName || currentUser?.email}

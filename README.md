@@ -127,10 +127,10 @@ Instalar as extensões no seu **visual studio code**:
 
   Mais informações: [site oficial](https://react-bootstrap.github.io/).
 
-- **React bootstrap icons:**
-  Biblioteca que nos oferece ícones do bootstrap em forma de componentes.
+- **React icons:**
+  Biblioteca que nos oferece ícones de diversas bibliotecas de CSS em forma de componentes.
 
-  Mais informações: [npm](https://www.npmjs.com/package/react-bootstrap-icons) / [Lista de ícones](https://icons.getbootstrap.com/).
+  Mais informações: [npm](https://www.npmjs.com/package/react-icons) / [Lista de ícones](https://react-icons.github.io/react-icons/).
 
 - **Classnames:**
   Uma pequena biblioteca utilizada para unir classnames em tags HTML.
