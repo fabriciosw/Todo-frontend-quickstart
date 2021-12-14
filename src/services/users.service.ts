@@ -1,9 +1,10 @@
 import HttpClient from './httpClient';
-import { IData, IUser } from '../interfaces';
+import { IUser } from '../interfaces';
 
 class UsersService {
-  static async users(): Promise<IData<IUser>> {
-    return HttpClient.api.get('/users');
+  static async users(): Promise<IUser[]> {
+    const { data } = await HttpClient.api.get<IUser[]>('/users');
+    return data;
   }
 
   static async user(id: string): Promise<IUser> {

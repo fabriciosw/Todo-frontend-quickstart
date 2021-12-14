@@ -15,13 +15,13 @@ pipeline {
     BRANCH="${env.GERRIT_BRANCH}"
   }
   stages {
-    stage('generate .env') {
-      steps {
-        withCredentials([file(credentialsId: "liberum-front-${env.ENV_TYPE}", variable: 'envData')]) {
-          writeFile file: ".env", text: readFile(envData)
-        }
-      }
-    }
+    // stage('generate .env') {
+    //   steps {
+    //     withCredentials([file(credentialsId: "quickstart-react-backoffice-${env.ENV_TYPE}", variable: 'envData')]) {
+    //       writeFile file: ".env", text: readFile(envData)
+    //     }
+    //   }
+    // }
     stage('Build App') {
       steps {
         nvm('v14.18'){
@@ -33,14 +33,14 @@ pipeline {
     }
     stage('Build Dockerfile') {
       steps {
-        sh "docker build -t liberum/liberum-front:$BRANCH  ."
-        sh "docker tag liberum/liberum-front:$BRANCH registry.softdesign-rs.com.br/liberum/liberum-front:$BRANCH"
-        sh "docker push registry.softdesign-rs.com.br/liberum/liberum-front:$BRANCH"
+        sh "docker build -t quickstart/quickstart-react:$BRANCH ."
+        sh "docker tag quickstart/quickstart-react:$BRANCH registry.softdesign-rs.com.br/quickstart/quickstart-react:$BRANCH"
+        sh "docker push registry.softdesign-rs.com.br/quickstart/quickstart-react:$BRANCH"
       }
     }
     stage('Undeploy') {
       steps {
-        build(job:'liberum-front-undeploy', parameters:[
+        build(job:'quickstart-react-undeploy', parameters:[
           string(name: 'key', value:"$BRANCH")
         ])
       }
@@ -58,16 +58,16 @@ pipeline {
     stage('Wait and get URL\'s') {
       environment {
         POD_NAME = sh (
-          script: "kubectl get pods -n liberum --selector=app=liberum-front-$BRANCH -o=jsonpath='{.items[0].metadata.name}'",
+          script: "kubectl get pods -n quickstart --selector=app=quickstart-react-$BRANCH -o=jsonpath='{.items[0].metadata.name}'",
           returnStdout: true
         ).trim()
         APP_URL = sh (
-          script: "kubectl get ingress -n liberum liberum-front-ingress-$BRANCH -o jsonpath='{.spec.rules[0].host}'",
+          script: "kubectl get ingress -n quickstart quickstart-react-ingress-$BRANCH -o jsonpath='{.spec.rules[0].host}'",
           returnStdout: true
         ).trim()
       }
       steps {
-        sh "kubectl wait --for=condition=ready --timeout=240s -n liberum pod/$POD_NAME"
+        sh "kubectl wait --for=condition=ready --timeout=240s -n quickstart pod/$POD_NAME"
         sh 'printf "\033[1;32m Versão disponivel em: $APP_URL  \033[0m $1"'
         script {
           env.APP_URL = APP_URL

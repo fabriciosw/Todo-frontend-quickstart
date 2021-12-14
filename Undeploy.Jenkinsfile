@@ -20,9 +20,9 @@ pipeline {
         BRANCH = "$lower_key"
       }
       steps {
-        sh "kubectl delete -n liberum svc liberum-front-service-$BRANCH | true"
-        sh "kubectl delete -n liberum ingress liberum-front-ingress-$BRANCH | true"
-        sh "kubectl delete -n liberum deploy liberum-front-deployment-$BRANCH | true"
+        sh "kubectl delete -n quickstart svc quickstart-react-service-$BRANCH | true"
+        sh "kubectl delete -n quickstart ingress quickstart-react-ingress-$BRANCH | true"
+        sh "kubectl delete -n quickstart deploy quickstart-react-deployment-$BRANCH | true"
       }
     }
   }

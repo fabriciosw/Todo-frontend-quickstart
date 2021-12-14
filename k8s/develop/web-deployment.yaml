@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: quickstart-react-deployment-develop
-  namespace: quickstart # <-- trocar p/ projeto
+  namespace: quickstart
 spec:
   selector:
     matchLabels:
@@ -23,7 +23,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: quickstart-react-service-develop
-  namespace: quickstart # <-- trocar p/ projeto
+  namespace: quickstart
 spec:
   selector:
     app: quickstart-react-develop
