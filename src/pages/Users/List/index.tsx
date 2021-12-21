@@ -1,19 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import Section from '../../../components/Section';
 import Text from '../../../components/Text';
 import DataTable from '../../../components/DataTable';
-import { IData, IUser } from '../../../interfaces';
+import { IUser } from '../../../interfaces';
 import UsersService from '../../../services/users.service';
 import toastMsg, { ToastType } from '../../../utils/toastMsg';
 
+const columns = [
+  { label: '#', key: 'id', isCenter: true },
+  { label: 'Nome', key: 'first_name' },
+  { label: 'Sobrenome', key: 'last_name' },
+  { label: 'E-mail', key: 'email' },
+  { label: 'Última atualização', key: 'createdAt', isDate: true },
+];
+
 const Users: React.FunctionComponent = (): React.ReactElement => {
-  const [users, setUsers] = useState<IData<IUser>>({} as IData<IUser>);
+  const [users, setUsers] = useState<IUser[]>([]);
+
+  const history = useHistory();
 
   const fetchUsers = async (): Promise<void> => {
     try {
-      const res = await UsersService.users();
-      setUsers(res);
+      const data = await UsersService.users();
+      setUsers(data);
+    } catch (error) {
+      toastMsg(ToastType.Error, (error as Error).message);
+    }
+  };
+
+  const deleteUser = async (id: string): Promise<void> => {
+    try {
+      const res = await UsersService.delete(id);
+      toastMsg(ToastType.Success, res);
+      fetchUsers();
     } catch (error) {
       toastMsg(ToastType.Error, (error as Error).message);
     }
@@ -44,7 +65,13 @@ const Users: React.FunctionComponent = (): React.ReactElement => {
       </Row>
       <Row>
         <Col md={12}>
-          <DataTable data={users} renderUsers={fetchUsers} />
+          <DataTable
+            data={users}
+            columns={columns}
+            hasActions
+            deleteAction={(id) => deleteUser(id)}
+            editAction={(id) => history.push(`/editar-funcionario/${id}`)}
+          />
         </Col>
       </Row>
     </Section>

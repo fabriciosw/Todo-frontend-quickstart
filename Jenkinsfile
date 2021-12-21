@@ -26,7 +26,7 @@ pipeline {
   stages {
     // stage('generate .env') {
     //   steps {
-    //     withCredentials([file(credentialsId: "quickstart-front-${env.ENV_TYPE}", variable: 'envData')]) {
+    //     withCredentials([file(credentialsId: "quickstart-react-backoffice-${env.ENV_TYPE}", variable: 'envData')]) {
     //       writeFile file: ".env", text: readFile(envData)
     //     }
     //   }
