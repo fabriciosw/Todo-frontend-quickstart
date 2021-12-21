@@ -61,7 +61,7 @@ const DataTable = ({
       );
     }
 
-    const trs = data.map((row, index) => {
+    const trs = data.map((row) => {
       const tds = columns.map(({ isCenter, key, isDate }) => {
         const classCenter = isCenter ? 'text-center' : '';
         const value = isDate ? formatDate((row as any)[key]) : (row as any)[key];
@@ -74,8 +74,7 @@ const DataTable = ({
 
       if (hasActions) {
         tds.push(
-          // eslint-disable-next-line react/no-array-index-key
-          <td key={`${index}_action`} className="table__actions">
+          <td key={`${row.id}_action`} className="table__actions">
             <HiPencil
               size={17}
               className="table__icon-update table__icon-svg"
