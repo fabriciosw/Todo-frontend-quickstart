@@ -13,34 +13,44 @@ pipeline {
         returnStdout: true
       ).trim()
     BRANCH="${env.GERRIT_BRANCH}"
+    REACT_APP_FIREBASE_API_KEY="AIzaSyCIr2hPRMM8OnvtqmxEWZAj68e5WmR7NIQ"
+    REACT_APP_FIREBASE_AUTH_DOMAIN="auth-test-8f770.firebaseapp.com"
+    REACT_APP_FIREBASE_PROJECT_ID="auth-test-8f770"
+    REACT_APP_FIREBASE_STORAGE_BUCKET="auth-test-8f770.appspot.com"
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID="374357110719"
+    REACT_APP_FIREBASE_APP_ID="1:374357110719:web:82eab40192fc68ebd5fb0a"
+    REACT_APP_GOOGLE_ANALYTICS="UA-212281130-1"
+    REACT_APP_API_URL="https://618a721734b4f400177c46d2.mockapi.io/api/v1/"
+    PUBLIC_URL="/"
   }
   stages {
-    stage('generate .env') {
-      steps {
-        withCredentials([file(credentialsId: "liberum-front-${env.ENV_TYPE}", variable: 'envData')]) {
-          writeFile file: ".env", text: readFile(envData)
-        }
-      }
-    }
+    // stage('generate .env') {
+    //   steps {
+    //     withCredentials([file(credentialsId: "quickstart-front-${env.ENV_TYPE}", variable: 'envData')]) {
+    //       writeFile file: ".env", text: readFile(envData)
+    //     }
+    //   }
+    // }
     stage('Build App') {
       steps {
         nvm('v14.18'){
           sh 'node --version'
           sh 'npx yarn'
           sh 'npx yarn build'
+          sh 'npx yarn lint:quiet'
         }
       }
     }
     stage('Build Dockerfile') {
       steps {
-        sh "docker build -t liberum/liberum-front:$BRANCH  ."
-        sh "docker tag liberum/liberum-front:$BRANCH registry.softdesign-rs.com.br/liberum/liberum-front:$BRANCH"
-        sh "docker push registry.softdesign-rs.com.br/liberum/liberum-front:$BRANCH"
+        sh "docker build -t quickstart/quickstart-react-backoffice:$BRANCH ."
+        sh "docker tag quickstart/quickstart-react-backoffice:$BRANCH registry.softdesign-rs.com.br/quickstart/quickstart-react-backoffice:$BRANCH"
+        sh "docker push registry.softdesign-rs.com.br/quickstart/quickstart-react-backoffice:$BRANCH"
       }
     }
     stage('Undeploy') {
       steps {
-        build(job:'liberum-front-undeploy', parameters:[
+        build(job:'quickstart-react-backoffice-undeploy', parameters:[
           string(name: 'key', value:"$BRANCH")
         ])
       }
@@ -58,16 +68,16 @@ pipeline {
     stage('Wait and get URL\'s') {
       environment {
         POD_NAME = sh (
-          script: "kubectl get pods -n liberum --selector=app=liberum-front-$BRANCH -o=jsonpath='{.items[0].metadata.name}'",
+          script: "kubectl get pods -n quickstart --selector=app=quickstart-react-backoffice-$BRANCH -o=jsonpath='{.items[0].metadata.name}'",
           returnStdout: true
         ).trim()
         APP_URL = sh (
-          script: "kubectl get ingress -n liberum liberum-front-ingress-$BRANCH -o jsonpath='{.spec.rules[0].host}'",
+          script: "kubectl get ingress -n quickstart quickstart-react-backoffice-ingress-$BRANCH -o jsonpath='{.spec.rules[0].host}'",
           returnStdout: true
         ).trim()
       }
       steps {
-        sh "kubectl wait --for=condition=ready --timeout=240s -n liberum pod/$POD_NAME"
+        sh "kubectl wait --for=condition=ready --timeout=240s -n quickstart pod/$POD_NAME"
         sh 'printf "\033[1;32m Versão disponivel em: $APP_URL  \033[0m $1"'
         script {
           env.APP_URL = APP_URL
