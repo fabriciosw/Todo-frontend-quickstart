@@ -4,7 +4,7 @@ import Section from '../../components/Section';
 import Text from '../../components/Text';
 
 const Home: React.FunctionComponent = () => (
-  <Section className="home">
+  <Section className="home" title="Página inicial" description="Página inicial">
     <Row>
       <Col md={12}>
         <Text as="h1" size="2rem" weight={700}>

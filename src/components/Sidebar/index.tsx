@@ -38,19 +38,6 @@ const Sidebar: React.FunctionComponent = () => {
               </Text>
             </NavLink>
           </li>
-          <li className="d-flex align-items-center">
-            <NavLink
-              to="/criar-funcionario"
-              exact
-              className="sidebar__routes--link w-100"
-              activeClassName="sidebar__routes--active"
-            >
-              <HiUser size={22} />{' '}
-              <Text as="span" className="sidebar__routes--title">
-                Criar funcionário
-              </Text>
-            </NavLink>
-          </li>
         </ul>
       </div>
     </Navbar>

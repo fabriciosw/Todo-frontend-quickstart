@@ -7,6 +7,7 @@ import DataTable from '../../../components/DataTable';
 import { IUser } from '../../../interfaces';
 import UsersService from '../../../services/users.service';
 import toastMsg, { ToastType } from '../../../utils/toastMsg';
+import Button from '../../../components/Button';
 
 const columns = [
   { label: '#', key: 'id', isCenter: true },
@@ -52,7 +53,7 @@ const Users: React.FunctionComponent = (): React.ReactElement => {
   }, []);
 
   return (
-    <Section className="users">
+    <Section className="users" title="Listagem de funcionários" description="Listagem de funcionários">
       <Row>
         <Col md={12}>
           <Text as="h1" size="2rem" weight={700}>
@@ -64,13 +65,18 @@ const Users: React.FunctionComponent = (): React.ReactElement => {
         </Col>
       </Row>
       <Row>
+        <Col md={12} className="mt-3 mb-2">
+          <Button type="button" variant="primary" onClick={() => history.push('/funcionarios/criar')} cy="test-create">
+            Cadastrar funcionário
+          </Button>
+        </Col>
         <Col md={12}>
           <DataTable
             data={users}
             columns={columns}
             hasActions
             deleteAction={(id) => deleteUser(id)}
-            editAction={(id) => history.push(`/editar-funcionario/${id}`)}
+            editAction={(id) => history.push(`/funcionarios/${id}`)}
           />
         </Col>
       </Row>

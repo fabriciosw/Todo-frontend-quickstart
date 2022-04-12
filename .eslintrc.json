@@ -29,7 +29,8 @@
     "no-console": ["error"],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
-    "camelcase": "off"
+    "camelcase": "off",
+    "react/require-default-props": "off"
   },
   "settings": {
     "import/resolver": {

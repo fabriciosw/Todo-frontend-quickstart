@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './styles.scss';
 
+// Google fonts:
 // Thin            100
 // Extra Light     200
 // Light           300
@@ -12,7 +13,7 @@ import './styles.scss';
 // Extra-Bold      800
 // Black           900
 interface IText {
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
   as:
     | 'p'
     | 'small'
@@ -71,6 +72,16 @@ const Text: React.FunctionComponent<IText> = ({
     children
   );
   return textElement;
+};
+
+Text.defaultProps = {
+  size: '',
+  weight: 400,
+  color: '',
+  className: '',
+  ariaLabel: '',
+  role: '',
+  title: '',
 };
 
 export default Text;

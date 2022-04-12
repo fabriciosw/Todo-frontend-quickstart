@@ -22,6 +22,7 @@
     "at-rule-name-case": "lower",
     "linebreaks": "unix",
     "no-empty-first-line": true,
-    "no-eol-whitespace": true
+    "no-eol-whitespace": true,
+    "no-descending-specificity": null
   }
 }

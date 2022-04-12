@@ -6,9 +6,9 @@ import ToastContainerProps from './utils/toastContainerProps';
 import './theme/main.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <ToastContainer {...ToastContainerProps} />
     <App />
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );

@@ -1,7 +1,10 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { IPrivateRoute } from './types';
+
+type IPrivateRoute = {
+  component: React.FunctionComponent<RouteComponentProps>;
+} & RouteProps;
 
 export default function PrivateRoute({ component: Component, ...rest }: IPrivateRoute): React.ReactElement {
   const { currentUser } = useAuth();

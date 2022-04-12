@@ -1,6 +1,6 @@
 .sidebar {
-  background-color: var(--main-color-background);
-  border-right: 1px solid var(--text-color-contrast-lighter);
+  background-color: var(--gray-700);
+  border-right: 1px solid var(--gray-rgba);
   min-height: 100vh;
   max-height: 100vh;
   min-width: 15.625rem;
@@ -22,13 +22,13 @@
       padding-left: 0;
     }
     &--link {
-      color: var(--text-color-primary);
+      color: var(--white-100);
       font-weight: var(--is-400);
       padding-left: 1rem;
       text-decoration: none;
       &:hover,
       &:focus {
-        color: var(--text-color-primary);
+        color: var(--white-100);
       }
     }
     &--title {
@@ -37,35 +37,19 @@
       top: 0.063rem;
     }
     &--active {
-      background-color: var(--main-color-darker);
-      color: var(--main-color-background) !important;
+      background-color: var(--teal-500);
+      color: var(--white-100) !important;
       font-weight: var(--is-500) !important;
     }
   }
 }
 
 .min-width {
-  transition: 0.2s ease-out;
-  min-width: 5rem;
-  max-width: 5rem;
-  .sidebar__brand {
-    svg {
-      min-width: 5rem;
-      max-width: 5rem;
-    }
-  }
+  transition: 0.1s ease-out;
+  min-width: 0;
+  max-width: 0;
+  .sidebar__brand,
   .sidebar__routes {
-    &--ul {
-      min-width: 5rem;
-      max-width: 5rem;
-    }
-    &--link {
-      padding-left: 0 !important;
-      text-align: center;
-      margin: 0 auto;
-    }
-    &--title {
-      display: none;
-    }
+    display: none;
   }
 }

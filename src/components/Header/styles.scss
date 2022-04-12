@@ -1,55 +1,28 @@
 header {
   .nav {
-    background-color: var(--main-color-darker);
-    &__toggle,
-    &__user {
-      color: var(--main-color-background);
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    max-height: 4rem;
+    background-color: var(--white-100);
+    &__toggle {
+      color: var(--teal-500);
+      margin-right: 0.45rem;
       cursor: pointer;
-      button {
-        background-color: transparent;
-        border: 0;
-        color: var(--main-color-background);
+    }
+    &__title {
+      color: var(--gray-300);
+      text-transform: uppercase;
+      h2 {
+        font-weight: var(--is-700);
+        font-size: 0.81rem;
+        position: relative;
+        top: 0.43rem;
       }
-      ul {
-        padding-left: 0;
-        padding-top: 1rem;
-        li {
-          display: block;
-          width: 100%;
-          padding: 0.25rem 1rem;
-          clear: both;
-          font-weight: var(--is-400);
-          color: var(--text-color-primary);
-          text-align: center;
-          text-decoration: none;
-          white-space: nowrap;
-          background-color: transparent;
-          border: 0;
-          a,
-          button {
-            font-weight: var(--is-400);
-            color: var(--text-color-primary);
-            text-decoration: none;
-          }
-          button:hover {
-            background-color: transparent;
-          }
-        }
-      }
-      .dropdown-menu {
-        width: 100%;
-      }
-      .dropdown-toggle {
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-        color: var(--main-color-background);
-        &:hover,
-        &:focus,
-        &:active {
-          color: var(--main-color-background);
-        }
-      }
+    }
+    &__button {
+      font-weight: var(--is-600);
+      font-size: .80rem;
     }
   }
 }

@@ -9,11 +9,11 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: var(--text-color-primary-rgba);
+  background-color: var(--gray-rgba);
   display: flex;
   align-items: center;
   justify-content: center;
   &__spinner {
-    color: var(--main-color-background);
+    color: var(--white-100);
   }
 }

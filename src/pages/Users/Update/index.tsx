@@ -60,7 +60,7 @@ const Update: React.FunctionComponent = (): React.ReactElement => {
   };
 
   return (
-    <Section className="create">
+    <Section className="create" title="Gerenciar funcionários" description="Gerenciar funcionários">
       <Row>
         <Col md={12}>
           <Text as="h1" size="2rem" weight={700}>
