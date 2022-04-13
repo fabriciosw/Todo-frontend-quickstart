@@ -50,7 +50,7 @@ export default function UpdateProfile(): React.ReactElement {
   );
 
   return (
-    <Section className="create">
+    <Section className="create" title="Atualizar conta" description="Atualizar conta">
       <Row>
         <Col md={12}>
           <Text as="h1" size="2rem" weight={700}>

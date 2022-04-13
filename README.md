@@ -96,6 +96,16 @@ Após realizar essas alterações, digite no seu terminal `$ yarn start` e aguar
 
   Mais informações: [site oficial](https://github.com/sanniassin/react-input-mask).
 
+- **Yup:**
+  Biblioteca que auxilia na validação de valores.
+
+  Mais informações: [site oficial](https://www.npmjs.com/package/yup).
+
+- **Formik:**
+  Biblioteca para auxiliar a criação de formulários, combinado junto ao yup.
+
+  Mais informações: [site oficial](https://www.npmjs.com/package/yup).
+
 ### :computer: Configurações VSCode
 
 - Atualmente existe uma pasta **.vscode** de configurações para o editor visual studio code. No momento está aplicando somente a formatação ao salvar.

@@ -1,11 +1,9 @@
 import { lazy } from 'react';
 import { IRoute } from './types';
 
-// Pages;
 const Home = lazy(() => import('../pages/Home'));
 const Users = lazy(() => import('../pages/Users/List'));
-const Create = lazy(() => import('../pages/Users/Create'));
-const Update = lazy(() => import('../pages/Users/Update'));
+const Actions = lazy(() => import('../pages/Users/Actions'));
 const Signup = lazy(() => import('../pages/Authentication/Signup'));
 const Login = lazy(() => import('../pages/Authentication/Login'));
 const ForgotPassword = lazy(() => import('../pages/Authentication/ForgotPassword'));
@@ -22,12 +20,8 @@ export const routes: IRoute[] = [
     component: Users,
   },
   {
-    path: '/funcionarios/criar',
-    component: Create,
-  },
-  {
-    path: '/funcionarios/:id',
-    component: Update,
+    path: '/funcionarios/acao/:id?',
+    component: Actions,
   },
   {
     path: '/perfil',

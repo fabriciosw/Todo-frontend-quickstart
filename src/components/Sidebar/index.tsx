@@ -28,7 +28,6 @@ const Sidebar: React.FunctionComponent = () => {
           <li className="d-flex align-items-center">
             <NavLink
               to="/funcionarios"
-              exact
               className="sidebar__routes--link w-100"
               activeClassName="sidebar__routes--active"
             >

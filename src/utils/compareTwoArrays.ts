@@ -9,6 +9,7 @@
  * @return {Boolean} true or false
  */
 
-const compareTwoArrays = <T, _>(array1: T[], array2: T[]): boolean => JSON.stringify(array1) === JSON.stringify(array2);
+const compareTwoArrays = <T, _>(array1: T[], array2: T[]): boolean =>
+  JSON.stringify(array1.sort()) === JSON.stringify(array2.sort());
 
 export default compareTwoArrays;

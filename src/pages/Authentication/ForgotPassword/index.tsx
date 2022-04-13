@@ -1,7 +1,8 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Row, Col, Form, Button, Card } from 'react-bootstrap';
 import Text from '../../../components/Text';
+import Section from '../../../components/Section';
 import { useAuth } from '../../../contexts/AuthContext';
 import toastMsg, { ToastType } from '../../../utils/toastMsg';
 import './styles.scss';
@@ -28,9 +29,9 @@ export default function ForgotPassword(): React.ReactElement {
   );
 
   return (
-    <Container fluid>
+    <Section title="Esqueci minha senha" description="Esqueci minha senha">
       <Row className="forgot-password d-flex align-items-center justify-content-center mt-5">
-        <Col sm={6} lg={3}>
+        <Col sm={12} lg={4}>
           <Card>
             <Card.Body>
               <Text as="h2" weight={700} className="text-center">
@@ -59,6 +60,6 @@ export default function ForgotPassword(): React.ReactElement {
           </Text>
         </Col>
       </Row>
-    </Container>
+    </Section>
   );
 }

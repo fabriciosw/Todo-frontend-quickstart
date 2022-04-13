@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @description
  * Verificar se o valor de entrada é um número
@@ -8,6 +7,6 @@
  * @return {Boolean} false
  */
 
-const checkIsNumeric = (value: any): boolean => /^-?\d+$/.test(value);
+const checkIsNumeric = (value: unknown): boolean => /^-?\d+$/.test(String(value));
 
 export default checkIsNumeric;

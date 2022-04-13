@@ -66,7 +66,7 @@ const Users: React.FunctionComponent = (): React.ReactElement => {
       </Row>
       <Row>
         <Col md={12} className="mt-3 mb-2">
-          <Button type="button" variant="primary" onClick={() => history.push('/funcionarios/criar')} cy="test-create">
+          <Button type="button" variant="primary" onClick={() => history.push('/funcionarios/acao')} cy="test-create">
             Cadastrar funcionário
           </Button>
         </Col>
@@ -76,7 +76,7 @@ const Users: React.FunctionComponent = (): React.ReactElement => {
             columns={columns}
             hasActions
             deleteAction={(id) => deleteUser(id)}
-            editAction={(id) => history.push(`/funcionarios/${id}`)}
+            editAction={(id) => history.push(`/funcionarios/acao/${id}`)}
           />
         </Col>
       </Row>
