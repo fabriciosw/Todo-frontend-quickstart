@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: quickstart-react-backoffice-container-develop
-          image: registry.softdesign-rs.com.br/quickstart/quickstart-react-backoffice:develop
+          image: registry.softdesign.com.br/quickstart/quickstart-react-backoffice:develop
           imagePullPolicy: Always
           ports:
             - containerPort: 80
