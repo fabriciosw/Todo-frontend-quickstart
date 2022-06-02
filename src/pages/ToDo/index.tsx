@@ -45,8 +45,8 @@ const ToDo = (): JSX.Element => {
             </div>
             <button
               type="button"
-              onClick={() =>
-                logoutUser()
+              onClick={
+                () => logoutUser()
                 // setIsAuthenticated
               }
             >

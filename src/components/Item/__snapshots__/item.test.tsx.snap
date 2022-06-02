@@ -18,14 +18,24 @@ exports[`Item component must match snapshot 1`] = `
     <div
       class="opcoes"
     >
-      <img
-        alt="terminar"
-        src="finish.jpg"
-      />
-      <img
-        alt="deletar"
-        src="Trash.png"
-      />
+      <button
+        class="button_item"
+        type="button"
+      >
+        <img
+          alt="terminar"
+          src="finish.jpg"
+        />
+      </button>
+      <button
+        class="button_item"
+        type="button"
+      >
+        <img
+          alt="deletar"
+          src="Trash.png"
+        />
+      </button>
     </div>
   </div>
 </div>

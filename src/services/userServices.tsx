@@ -17,7 +17,7 @@ export async function loginUser(
 }
 
 export function logoutUser(): void {
-// setIsAuthenticated: (x: boolean) => void
+  // setIsAuthenticated: (x: boolean) => void
   localStorage.removeItem('token');
   // setIsAuthenticated(false);
   document.location.reload();

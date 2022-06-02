@@ -38,27 +38,27 @@ exports[`Main screen should match snapshot 1`] = `
               for="tarefa"
             >
               Adicione um a nova tarefa
+              <input
+                id="tarefa"
+                name="tarefa"
+                placeholder="Nome da tarefa"
+                required=""
+                type="text"
+                value=""
+              />
             </label>
-            <input
-              id="tarefa"
-              name="tarefa"
-              placeholder="Nome da tarefa"
-              required=""
-              type="text"
-              value=""
-            />
             <label
               for="descricao"
             >
               Adicione uma descrição
+              <input
+                id="descricao"
+                name="descricao"
+                placeholder="Descricao da tarefa"
+                type="text"
+                value=""
+              />
             </label>
-            <input
-              id="descricao"
-              name="descricao"
-              placeholder="Descricao da tarefa"
-              type="text"
-              value=""
-            />
             <input
               type="submit"
             />
@@ -67,20 +67,28 @@ exports[`Main screen should match snapshot 1`] = `
         <div
           class="linha"
         >
-          <button>
+          <button
+            type="button"
+          >
             Ver Todas
           </button>
-          <button>
+          <button
+            type="button"
+          >
             Ver Pendentes
           </button>
-          <button>
+          <button
+            type="button"
+          >
             Ver Concluídas
           </button>
         </div>
+        <button
+          type="button"
+        >
+          Deslogar
+        </button>
       </div>
-      <button>
-        Deslogar
-      </button>
     </div>
     <div
       class="rightside"

@@ -59,7 +59,7 @@ export function adicionarTarefa(
     .post(
       'http://localhost:3333/tasks/',
       {
-        title: title,
+        title,
         description: desc,
       },
       { headers: { Authorization: `bearer ${token}` } }
