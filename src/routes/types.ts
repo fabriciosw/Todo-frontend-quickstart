@@ -1,5 +1,7 @@
+import React from 'react';
+
 export interface IRoute {
   path: string;
-  component: React.FunctionComponent;
+  element: React.FunctionComponent;
   public?: boolean;
 }

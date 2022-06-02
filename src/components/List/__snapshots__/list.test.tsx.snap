@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`must match snapshot 1`] = `
+<div>
+  <aside>
+    <div
+      class="tarefa"
+    >
+      <div
+        class="dados"
+      >
+        <p>
+          first task
+        </p>
+        <span>
+          big desc
+        </span>
+      </div>
+      <div
+        class="opcoes"
+      >
+        <img
+          alt="terminar"
+          src="finish.jpg"
+        />
+        <img
+          alt="deletar"
+          src="Trash.png"
+        />
+      </div>
+    </div>
+    <div
+      class="tarefa finalizado"
+    >
+      <div
+        class="dados"
+      >
+        <p>
+          second task
+        </p>
+        <span>
+          small =D
+        </span>
+      </div>
+      <div
+        class="opcoes"
+      >
+        <img
+          alt="deletar"
+          src="Trash.png"
+        />
+      </div>
+    </div>
+  </aside>
+</div>
+`;

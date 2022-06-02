@@ -1,37 +1,35 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
-import PrivateRoute from '../components/PrivateRoute';
-import { useAuth } from '../contexts/AuthContext';
-import { routes } from './routes';
-
-// components;
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
+import { Routes as RoutesRouter, Route, Navigate } from 'react-router-dom';
+import Login from '../pages/Login';
+import * as userServices from '../services/userServices';
+import ToDo from '../pages/ToDo';
+import { AuthenticationContext } from '../contexts/AuthenticationContext';
 import Loader from '../components/Loader';
+// components;
 
 const Routes: React.FunctionComponent = () => {
-  const { currentUser } = useAuth();
+  // const renderRoutes = (): React.ReactNode => routes.map((route) => <Route key={route.path} {...route} />);
 
-  const renderRoutes = (): React.ReactNode =>
-    routes.map((route) => {
-      if (route.public) {
-        return <Route key={route.path} {...route} exact />;
-      }
-      return <PrivateRoute key={route.path} {...route} exact />;
-    });
+  const { isAuthenticated } = AuthenticationContext();
+  const renderRoutes = (): React.ReactNode => (
+    <RoutesRouter>
+      <Route
+        path="/login"
+        element={isAuthenticated ? <Navigate to="/todo" replace /> : <Login loginUser={userServices.loginUser} />}
+      />
+      <Route path="/todo" element={isAuthenticated ? <ToDo /> : <Navigate to="/login" replace />} />
+      <Route path="*" element={isAuthenticated ? <ToDo /> : <Navigate to="/login" replace />} />
+    </RoutesRouter>
+  );
 
   return (
     <div className="d-flex">
-      {currentUser && <Sidebar />}
       <div className="d-flex flex-column p-0 w-100">
         <main>
-          {currentUser && <Header />}
-          <Container fluid>
-            <React.Suspense fallback={<Loader />}>
-              <Switch>{renderRoutes()}</Switch>
-            </React.Suspense>
-          </Container>
+          <React.Suspense fallback={<Loader />}>
+            {renderRoutes()}
+            {/* <RoutesRouter>{renderRoutes()}</RoutesRouter> */}
+          </React.Suspense>
         </main>
       </div>
     </div>

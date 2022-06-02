@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item component must match snapshot 1`] = `
+<div>
+  <div
+    class="tarefa"
+  >
+    <div
+      class="dados"
+    >
+      <p>
+        testing task
+      </p>
+      <span>
+        testing description
+      </span>
+    </div>
+    <div
+      class="opcoes"
+    >
+      <img
+        alt="terminar"
+        src="finish.jpg"
+      />
+      <img
+        alt="deletar"
+        src="Trash.png"
+      />
+    </div>
+  </div>
+</div>
+`;

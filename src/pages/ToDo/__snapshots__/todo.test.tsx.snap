@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main screen should match snapshot 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div
+      class="leftside"
+    >
+      <div
+        class="formbox"
+      >
+        <h1>
+          Lista de tarefas
+        </h1>
+        <div
+          class="linha"
+        >
+          <h5>
+            total: 
+            0
+          </h5>
+          <h5>
+            pendentes: 
+            0
+          </h5>
+          <h5>
+            concluídas: 
+            0
+          </h5>
+        </div>
+        <form>
+          <div
+            class="campos"
+          >
+            <label
+              for="tarefa"
+            >
+              Adicione um a nova tarefa
+            </label>
+            <input
+              id="tarefa"
+              name="tarefa"
+              placeholder="Nome da tarefa"
+              required=""
+              type="text"
+              value=""
+            />
+            <label
+              for="descricao"
+            >
+              Adicione uma descrição
+            </label>
+            <input
+              id="descricao"
+              name="descricao"
+              placeholder="Descricao da tarefa"
+              type="text"
+              value=""
+            />
+            <input
+              type="submit"
+            />
+          </div>
+        </form>
+        <div
+          class="linha"
+        >
+          <button>
+            Ver Todas
+          </button>
+          <button>
+            Ver Pendentes
+          </button>
+          <button>
+            Ver Concluídas
+          </button>
+        </div>
+      </div>
+      <button>
+        Deslogar
+      </button>
+    </div>
+    <div
+      class="rightside"
+    >
+      <h1
+        class="title"
+      >
+        Tarefas
+      </h1>
+      <aside />
+    </div>
+  </div>
+</div>
+`;
