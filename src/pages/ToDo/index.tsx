@@ -5,12 +5,10 @@ import Formulario from '../../components/Form';
 import * as todoServices from '../../services/todoServices';
 import Lista from '../../components/List';
 import { logoutUser } from '../../services/userServices';
-// import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 const ToDo = (): JSX.Element => {
   const [taskStatus, setTaskStatus] = useState<boolean | undefined>(undefined);
   const [tarefas, setTarefas] = useState<ITarefa[]>([]);
-  // const { setIsAuthenticated } = AuthenticationContext();
 
   useEffect(() => {
     todoServices.getAll(setTarefas);
@@ -47,7 +45,6 @@ const ToDo = (): JSX.Element => {
               type="button"
               onClick={
                 () => logoutUser()
-                // setIsAuthenticated
               }
             >
               Deslogar

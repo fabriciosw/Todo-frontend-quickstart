@@ -9,7 +9,7 @@ export default function Login({
     email: string,
     password: string,
     setIsAuthenticated: (x: boolean) => void
-  ) => Promise<void>;
+  ) => void;
 }): JSX.Element {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');

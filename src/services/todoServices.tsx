@@ -1,16 +1,9 @@
-import axios from 'axios';
 import { ITarefa } from '../interfaces/tarefa';
-
-let token: string | null;
-
-export function getToken(): void {
-  token = localStorage.getItem('token');
-}
-getToken();
+import HttpClient from './httpClient';
 
 export function getAll(setTarefas: (x: ITarefa[]) => void): void {
-  axios
-    .get('http://localhost:3333/tasks/', { headers: { Authorization: `bearer ${token}` } })
+  HttpClient.api
+    .get('/tasks/')
     .then((response: { data: Array<ITarefa> }) => setTarefas(response.data));
   // .catch((error: string) =>
   //   console.log(error)
@@ -18,13 +11,11 @@ export function getAll(setTarefas: (x: ITarefa[]) => void): void {
 }
 
 export function endTask(id: number, setTarefas: (x: ITarefa[]) => void): void {
-  axios
-    .put(
-      `http://localhost:3333/tasks/${id}`,
+  HttpClient.api.put(
+      `/tasks/${id}`,
       {
         complete: true,
-      },
-      { headers: { Authorization: `bearer ${token}` } }
+      }
     )
     .then(() => getAll(setTarefas));
   // .catch((error: string) => {
@@ -33,7 +24,9 @@ export function endTask(id: number, setTarefas: (x: ITarefa[]) => void): void {
 }
 
 export function deleteTask(id: number, setTarefas: (x: ITarefa[]) => void): void {
-  axios.delete(`http://localhost:3333/tasks/${id}`, { headers: { Authorization: `bearer ${token}` } }).then(() => {
+  HttpClient.api
+    .delete(`/tasks/${id}`)
+    .then(() => {
     getAll(setTarefas);
   });
   // .catch((error: string) =>
@@ -52,17 +45,18 @@ export function adicionarTarefa(
   evento.preventDefault();
 
   let desc;
-  if (description.trim() === '') desc = 'Sem descrição';
-  else desc = description;
+  if (description.trim() === '')
+    desc = 'Sem descrição';
+  else
+    desc = description;
 
-  axios
+  HttpClient.api
     .post(
-      'http://localhost:3333/tasks/',
+      '/tasks/',
       {
         title,
         description: desc,
       },
-      { headers: { Authorization: `bearer ${token}` } }
     )
     .then(() => {
       getAll(setTarefas);
